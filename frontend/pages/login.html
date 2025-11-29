@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup - Grand Luxury Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .auth-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+        .auth-tabs {
+            background: #f8f9fa;
+            padding: 0;
+        }
+        .nav-pills .nav-link {
+            border-radius: 0;
+            padding: 20px 40px;
+            font-weight: 600;
+            color: #666;
+            border: none;
+            background: transparent;
+        }
+        .nav-pills .nav-link.active {
+            background: #d4af37;
+            color: white;
+        }
+        .auth-content {
+            padding: 40px;
+        }
+        .auth-title {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-control {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+        .btn-auth {
+            background: linear-gradient(135deg, #d4af37 0%, #f1c40f 100%);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-auth:hover {
+            background: linear-gradient(135deg, #c0a030 0%, #e1b400 100%);
+            color: white;
+        }
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .social-btn {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 10px;
+            line-height: 50px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            color: white;
+        }
+        .social-btn.facebook { background: #3b5998; }
+        .social-btn.google { background: #dd4b39; }
+        .social-btn.twitter { background: #1da1f2; }
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .forgot-password a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <div class="auth-tabs">
+                        <ul class="nav nav-pills w-100" id="authTabs" role="tablist">
+                            <li class="nav-item w-50" role="presentation">
+                                <button class="nav-link active w-100" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                                </button>
+                            </li>
+                            <li class="nav-item w-50" role="presentation">
+                                <button class="nav-link w-100" id="signup-tab" data-bs-toggle="pill" data-bs-target="#signup" type="button" role="tab">
+                                    <i class="fas fa-user-plus me-2"></i>Sign Up
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="auth-content">
+                        <div class="tab-content" id="authTabContent">
+                            <!-- Login Form -->
+                            <div class="tab-pane fade show active" id="login" role="tabpanel">
+                                <h2 class="auth-title">Welcome Back</h2>
+                                <form id="login-form">
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="loginEmail" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-auth">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                                    </button>
+                                </form>
+                                <div class="forgot-password">
+                                    <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+                                </div>
+                                <div class="social-login">
+                                    <p class="text-muted">Or login with</p>
+                                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+                                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                            
+                            <!-- Signup Form -->
+                            <div class="tab-pane fade" id="signup" role="tabpanel">
+                                <h2 class="auth-title">Create Account</h2>
+                                <form id="signup-form">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="signupFirstName" placeholder="First Name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="signupLastName" placeholder="Last Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="signupEmail" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="tel" class="form-control" id="signupPhone" placeholder="Phone Number">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                        <label class="form-check-label" for="agreeTerms">
+                                            I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a>
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-auth">
+                                        <i class="fas fa-user-plus me-2"></i>Create Account
+                                    </button>
+                                </form>
+                                <div class="social-login">
+                                    <p class="text-muted">Or sign up with</p>
+                                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+                                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-none d-md-block">
+                    <div class="h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/rooms/luxury_suite.png') center/cover;">
+                        <div class="text-center text-white p-4">
+                            <h1 class="display-4 mb-4">
+                                <i class="fas fa-crown mb-3 d-block" style="font-size: 3rem; color: #d4af37;"></i>
+                                Grand Luxury Hotel
+                            </h1>
+                            <p class="lead">Experience the pinnacle of luxury and comfort</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/api.js"></script>
+    <script>
+        // Login form handler
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            try {
+                // Show loading state
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Logging in...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Check for admin credentials
+                if (email === 'admin@grandluxuryhotel.com' && password === 'admin123') {
+                    alert('Welcome Admin! Redirecting to dashboard...');
+                    window.location.href = 'admin/dashboard.html';
+                } else {
+                    alert('Login successful! Welcome back.');
+                    window.location.href = '../index.html';
+                }
+                
+            } catch (error) {
+                alert('Login failed. Please check your credentials.');
+                
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Signup form handler
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('signupFirstName').value;
+            const lastName = document.getElementById('signupLastName').value;
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('signupPhone').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return;
+            }
+            
+            try {
+                // Show loading state
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating account...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                alert('Account created successfully! Please login with your credentials.');
+                
+                // Switch to login tab
+                document.getElementById('login-tab').click();
+                
+                // Pre-fill login email
+                document.getElementById('loginEmail').value = email;
+                
+                // Reset form
+                e.target.reset();
+                
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+            } catch (error) {
+                alert('Registration failed. Please try again.');
+                
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        function showForgotPassword() {
+            const email = prompt('Please enter your email address:');
+            if (email) {
+                alert('Password reset instructions have been sent to your email.');
+            }
+        }
+    </script>
+</body>
+</html>

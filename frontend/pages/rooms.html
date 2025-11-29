@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms - Grand Luxury Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        .room-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            background-color: #fff;
+        }
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+        .room-card img {
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .room-card .card-body {
+            padding: 25px;
+        }
+        .room-card .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        .room-card .card-text {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        .room-card .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 15px;
+        }
+        .room-card .features li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        .room-card .features i {
+            color: #d4af37;
+            margin-right: 8px;
+        }
+        .booking-form-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        .booking-form-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .form-control:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+        .btn-primary-custom {
+            background-color: #d4af37;
+            border-color: #d4af37;
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background-color: #c0a030;
+            border-color: #c0a030;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-crown me-2"></i>Grand Luxury Hotel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="rooms.html">Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="restaurant.html">Restaurant</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login/Signup</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/rooms/luxury_suite.png') no-repeat center center/cover; height: 400px; margin-top: 76px;">
+        <div class="container">
+            <h1 class="display-3">Our Luxurious Rooms</h1>
+            <p class="lead">Experience unparalleled comfort and elegance.</p>
+        </div>
+    </section>
+
+    <!-- Rooms Listing Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Explore Our Room Types</h2>
+            <div id="room-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col">
+                    <div class="room-card h-100">
+                        <img src="../images/rooms/luxury_suite.png" class="card-img-top" alt="Luxury Suite">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Suite</h5>
+                            <p class="card-text">Indulge in the ultimate luxury with our spacious suites, featuring a separate living area, premium amenities, and breathtaking views.</p>
+                            <ul class="list-unstyled features">
+                                <li><i class="fas fa-bed"></i> King Size Bed</li>
+                                <li><i class="fas fa-wifi"></i> Free Wi-Fi</li>
+                                <li><i class="fas fa-tv"></i> Flat-screen TV</li>
+                                <li><i class="fas fa-bath"></i> Jacuzzi Bath</li>
+                            </ul>
+                            <div class="price">$500 / night</div>
+                            <a href="booking.html?room_type=luxury_suite" class="btn btn-primary-custom mt-3">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="room-card h-100">
+                        <img src="../images/rooms/standard_double.png" class="card-img-top" alt="Standard Double Room">
+                        <div class="card-body">
+                            <h5 class="card-title">Standard Double Room</h5>
+                            <p class="card-text">Comfortable and elegantly designed, our standard double rooms offer a relaxing stay with all essential amenities.</p>
+                            <ul class="list-unstyled features">
+                                <li><i class="fas fa-bed"></i> Two Double Beds</li>
+                                <li><i class="fas fa-wifi"></i> Free Wi-Fi</li>
+                                <li><i class="fas fa-tv"></i> Flat-screen TV</li>
+                                <li><i class="fas fa-coffee"></i> Coffee Maker</li>
+                            </ul>
+                            <div class="price">$250 / night</div>
+                            <a href="booking.html?room_type=standard_double" class="btn btn-primary-custom mt-3">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="room-card h-100">
+                        <img src="../images/rooms/ocean_view.png" class="card-img-top" alt="Ocean View Room">
+                        <div class="card-body">
+                            <h5 class="card-title">Ocean View Room</h5>
+                            <p class="card-text">Wake up to stunning ocean vistas in our beautifully appointed ocean view rooms, complete with a private balcony.</p>
+                            <ul class="list-unstyled features">
+                                <li><i class="fas fa-bed"></i> King Size Bed</li>
+                                <li><i class="fas fa-wifi"></i> Free Wi-Fi</li>
+                                <li><i class="fas fa-tv"></i> Flat-screen TV</li>
+                                <li><i class="fas fa-water"></i> Private Balcony</li>
+                            </ul>
+                            <div class="price">$350 / night</div>
+                            <a href="booking.html?room_type=ocean_view" class="btn btn-primary-custom mt-3">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-5 booking-form-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Quick Booking</h2>
+            <form id="quick-booking-form">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="checkInDate" class="form-label">Check-in Date</label>
+                        <input type="date" class="form-control" id="checkInDate" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="checkOutDate" class="form-label">Check-out Date</label>
+                        <input type="date" class="form-control" id="checkOutDate" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="roomType" class="form-label">Room Type</label>
+                        <select class="form-select" id="roomType" required>
+                            <option value="">Select a room type</option>
+                            <option value="luxury_suite">Luxury Suite</option>
+                            <option value="standard_double">Standard Double Room</option>
+                            <option value="ocean_view">Ocean View Room</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="guests" class="form-label">Number of Guests</label>
+                        <input type="number" class="form-control" id="guests" min="1" value="1" required>
+                    </div>
+                    <div class="col-12 text-center mt-4">
+                        <button type="submit" class="btn btn-primary-custom">Check Availability</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Grand Luxury Hotel. All rights reserved.</p>
+            <div class="social-icons mt-3">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Handle quick booking form submission
+            const quickBookingForm = document.getElementById("quick-booking-form");
+            if (quickBookingForm) {
+                quickBookingForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    
+                    const checkInDate = document.getElementById("checkInDate").value;
+                    const checkOutDate = document.getElementById("checkOutDate").value;
+                    const roomType = document.getElementById("roomType").value;
+                    const guests = document.getElementById("guests").value;
+
+                    if (!checkInDate || !checkOutDate || !roomType || !guests) {
+                        alert("Please fill in all booking details.");
+                        return;
+                    }
+
+                    // Redirect to booking page with parameters
+                    const params = new URLSearchParams({
+                        room_type: roomType,
+                        check_in: checkInDate,
+                        check_out: checkOutDate,
+                        guests: guests
+                    });
+                    
+                    window.location.href = `booking.html?${params.toString()}`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
